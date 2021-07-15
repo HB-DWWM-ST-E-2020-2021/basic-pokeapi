@@ -9,3 +9,9 @@
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+$pokedex = new \Hb\BasicPokeapi\Pokedex();
+
+header('Content-Type: application/json');
+
+echo json_encode($pokedex->getCleanPikachu());
