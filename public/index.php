@@ -14,4 +14,4 @@ $pokedex = new \Hb\BasicPokeapi\Pokedex();
 
 header('Content-Type: application/json');
 
-echo json_encode($pokedex->getCleanPikachu());
+echo json_encode($pokedex->getAllPokemon());
