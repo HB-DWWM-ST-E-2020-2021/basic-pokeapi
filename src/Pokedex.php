@@ -38,12 +38,13 @@ class Pokedex
      * @param int $offset
      * @return array
      */
-    public function getAllPokemon(int $offset = 0): array
+    public function getAllPokemon(int $offset = 0, int $limit = 50): array
     {
         // Get pokemons from https://pokeapi.co/ by offset.
         $response = $this->client->request('GET', 'pokemon', [
             'query' => [
                 'offset' => $offset,
+                'limit' => $limit,
             ],
         ]);
 
@@ -87,7 +88,7 @@ class Pokedex
             $nextOffset = $matches[1];
 
             // Recurive call to getAllPokemon with the new next offset.
-            $nextPokemons = $this->getAllPokemon($nextOffset);
+            $nextPokemons = $this->getAllPokemon($nextOffset, $limit);
 
             // Merge current pokemons with the next pokemons.
             $pokemons = array_merge($pokemons, $nextPokemons);
